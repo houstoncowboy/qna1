@@ -104,8 +104,7 @@ function submitAnswer(questionId) {
 function renderQuestions() {
     db.collection("questions")
         .orderBy("createdAt", "desc")
-        .get()
-        .then((querySnapshot) => {
+        .onSnapshot((querySnapshot) => {
             const questionsList = document.getElementById('questionsList');
             questionsList.innerHTML = '';
             
@@ -147,9 +146,6 @@ function renderQuestions() {
                     </div>
                 `;
             });
-        })
-        .catch((error) => {
-            console.error("Error getting documents: ", error);
         });
 }
 
@@ -164,4 +160,5 @@ function clearForm() {
 window.onload = () => {
     renderQuestions();
 };
+
 
