@@ -40,6 +40,7 @@ function submitQuestion() {
     db.collection("questions").add(question)
         .then(() => {
             clearForm();
+            renderQuestions();
             Swal.fire({
                 icon: 'success',
                 title: '등록 완료!',
@@ -83,6 +84,7 @@ function submitAnswer(questionId) {
         answers: firebase.firestore.FieldValue.arrayUnion(answer)
     }).then(() => {
         answerInput.value = '';
+        renderQuestions();
         Swal.fire({
             icon: 'success',
             title: '답변 완료!',
@@ -102,7 +104,7 @@ function submitAnswer(questionId) {
 
 // 질문 목록 렌더링
 function renderQuestions() {
-    db.collection("questions")
+    const unsubscribe = db.collection("questions")
         .orderBy("createdAt", "desc")
         .onSnapshot((querySnapshot) => {
             const questionsList = document.getElementById('questionsList');
@@ -135,9 +137,9 @@ function renderQuestions() {
                                     <textarea id="answer-${doc.id}" 
                                         class="form-control mb-2" 
                                         placeholder="답변을 입력하세요"
-                                        rows="3"></textarea>
+                                        rows="2"></textarea>
                                     <button onclick="submitAnswer('${doc.id}')" 
-                                        class="btn btn-primary">
+                                        class="btn btn-primary btn-sm">
                                         <i class="bi bi-reply-fill me-1"></i>답변
                                     </button>
                                 </div>
@@ -146,7 +148,11 @@ function renderQuestions() {
                     </div>
                 `;
             });
+        }, (error) => {
+            console.error("Error getting documents: ", error);
         });
+
+    return unsubscribe;
 }
 
 // 폼 초기화
@@ -157,8 +163,17 @@ function clearForm() {
 }
 
 // 페이지 로드 시 실행
+let unsubscribe;
 window.onload = () => {
-    renderQuestions();
+    unsubscribe = renderQuestions();
 };
+
+// 페이지 언로드 시 리스너 해제
+window.onunload = () => {
+    if (unsubscribe) {
+        unsubscribe();
+    }
+};
+
 
 
