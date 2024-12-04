@@ -117,7 +117,6 @@ button:hover {
 .badge {
     font-weight: normal;
 }
-
 .answer-form textarea {
     min-height: 100px;
     resize: vertical;
@@ -133,3 +132,26 @@ button:hover {
         min-width: 120px;
     }
 }
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.user-info {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.d-none {
+    display: none !important;
+}
+
+
