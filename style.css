@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.question-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #444;
+    margin-bottom: 15px;
+}
+
+select, input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.question-card {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.question-subject {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-bottom: 0.5rem;
+}
+
+.question-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 0.5rem;
+}
+
+.question-content {
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+.answers {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.answer {
+    background: #f8f9fa;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+}
+
+.answer-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.answer-form input {
+    flex: 1;
+}
+
+.timestamp {
+    color: #6c757d;
+    font-size: 0.8em;
+}
+
+.badge {
+    font-weight: normal;
+}
+
+.answer-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.answer-form button {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .answer-form button {
+        width: auto;
+        min-width: 120px;
+    }
+}
